@@ -79,13 +79,13 @@ public class RewardsService {
 		int eligibleAmountForMaxPoints = 0;
 		int transactionAmount = Math.round(transaction.getTransactionAmount());
 
-		if (transactionAmount >= amtEligibleForMaxRewardPoints) {
+		if (transactionAmount > amtEligibleForMaxRewardPoints) {
 			// amount eligible for earning max. reward points
-			eligibleAmountForMaxPoints = transactionAmount - (amtEligibleForMaxRewardPoints - 1);
+			eligibleAmountForMaxPoints = transactionAmount - (amtEligibleForMaxRewardPoints);
 		}
 
 		// amount eligible for earning min. reward points
-		int eligibleAmountForMinPoints = transactionAmount - eligibleAmountForMaxPoints - (amtEligibleForMinRewardPoints - 1);
+		int eligibleAmountForMinPoints = transactionAmount - eligibleAmountForMaxPoints - (amtEligibleForMinRewardPoints);
 
 		return (eligibleAmountForMaxPoints * maxRewardPoints) + (eligibleAmountForMinPoints * minRewardPoints);
 	}
